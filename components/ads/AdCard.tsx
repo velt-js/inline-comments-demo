@@ -23,28 +23,28 @@ export function AdCard({ ad, onClick }: AdCardProps) {
       key={ad.id}
       id={ad.id}
       data-id={ad.id}
-      className="cursor-pointer transition-all hover:shadow-md w-full"
+      className="cursor-pointer transition-all hover:shadow-md w-full overflow-hidden"
       onClick={() => onClick(ad)}
     >
-      <div className="flex items-center justify-between w-full">
-        <CardHeader className="flex-shrink-0">
-          <CardTitle>{ad.title}</CardTitle>
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between w-full">
+        <CardHeader className="flex-shrink-0 p-4 sm:p-6">
+          <CardTitle className="text-lg sm:text-xl">{ad.title}</CardTitle>
           <CardDescription>{ad.type}</CardDescription>
         </CardHeader>
-        <CardContent className="flex items-center justify-end space-x-8 p-6">
-          <div className="text-center">
+        <CardContent className="flex flex-row flex-wrap items-center justify-end gap-4 sm:gap-8 p-4 sm:p-6 w-full sm:w-auto">
+          <div className="text-center min-w-[80px]">
             <p className="text-sm font-medium text-muted-foreground">Impressions</p>
-            <p className="text-xl ">{ad.impressions.toLocaleString()}</p>
+            <p className="text-lg sm:text-xl">{ad.impressions.toLocaleString()}</p>
           </div>
-          <div className="text-center">
+          <div className="text-center min-w-[80px]">
             <p className="text-sm font-medium text-muted-foreground">Clicks</p>
-            <p className="text-xl ">{ad.clicks.toLocaleString()}</p>
+            <p className="text-lg sm:text-xl">{ad.clicks.toLocaleString()}</p>
           </div>
-          <div className="text-center">
+          <div className="text-center min-w-[80px]">
             <p className="text-sm font-medium text-muted-foreground">CTR</p>
-            <p className="text-xl ">{ad.ctr}</p>
+            <p className="text-lg sm:text-xl">{ad.ctr}</p>
           </div>
-          <div className="w-16 flex items-center justify-center">
+          <div className="flex items-center justify-center min-w-[64px]">
             <VeltCommentTool targetElementId={ad.id} />
             <VeltCommentBubble targetElementId={ad.id} />
           </div>

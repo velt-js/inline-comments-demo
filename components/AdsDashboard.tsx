@@ -25,9 +25,9 @@ export function AdsDashboard() {
         <LeftSidebar />
 
         {/* Main Content */}
-        <main className="flex-1 overflow-auto p-6">
+        <main className="flex-1 overflow-auto p-2 sm:p-4 md:p-6">
           <h1 className="mb-6 text-2xl font-bold">Ads Inventory</h1>
-          <div className="space-y-4 max-w-[calc(100vw-32rem)] mx-auto">
+          <div className="space-y-4 w-full max-w-full md:max-w-[calc(100vw-20rem)] lg:max-w-[calc(100vw-32rem)] mx-auto">
             {adsData.map((ad) => (
               <AdCard key={ad.id} ad={ad} onClick={handleCardClick} />
             ))}
