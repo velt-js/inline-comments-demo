@@ -32,7 +32,7 @@ export function RightSidebar({ isOpen, onClose, selectedAd }: RightSidebarProps)
       side="right"
       className={`w-80 border-l ${
         isOpen ? "translate-x-0" : "translate-x-full"
-      } fixed right-0 h-full transition-transform duration-300 ease-in-out bg-background`}
+      } fixed right-0 top-16 h-[calc(100vh-4rem)] transition-transform duration-300 ease-in-out bg-background`}
     >
       <SidebarHeader className="border-b">
         <div className="flex w-full items-center justify-between p-4">

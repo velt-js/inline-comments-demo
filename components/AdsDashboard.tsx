@@ -17,7 +17,7 @@ export function AdsDashboard() {
   }
 
   // Set the Velt document
-  useSetDocument("ads-inventory-dash-1");
+  useSetDocument("ads-inventory-dash-1", {documentName: "Ads Inventory Dashboard"});
 
   return (
     <SidebarProvider>
