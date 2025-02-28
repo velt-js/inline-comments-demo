@@ -6,7 +6,8 @@ import { Label } from "@/components/ui/label"
 import { Sidebar, SidebarContent, SidebarHeader } from "@/components/ui/sidebar"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import type { Ad } from "./AdCard"
-import { VeltInlineCommentsSection } from "@veltdev/react"
+import { VeltInlineCommentsSection, useVeltClient, useCommentUtils } from "@veltdev/react"
+import { Checkbox } from "@/components/ui/checkbox"
 
 interface RightSidebarProps {
   isOpen: boolean
@@ -17,6 +18,10 @@ interface RightSidebarProps {
 export function RightSidebar({ isOpen, onClose, selectedAd }: RightSidebarProps) {
   const [title, setTitle] = React.useState("")
   const [type, setType] = React.useState("")
+  const [sortOrder, setSortOrder] = React.useState<"asc" | "desc">("desc")
+  const [showResolved, setShowResolved] = React.useState(false)
+  const { client } = useVeltClient();
+  const commentUtils = useCommentUtils();
 
   React.useEffect(() => {
     if (selectedAd) {
@@ -24,6 +29,27 @@ export function RightSidebar({ isOpen, onClose, selectedAd }: RightSidebarProps)
       setType(selectedAd.type)
     }
   }, [selectedAd])
+
+  const toggleSortOrder = () => {
+    setSortOrder(sortOrder === "desc" ? "asc" : "desc")
+  }
+
+  const handleShowResolvedChange = (checked: boolean) => {
+    setShowResolved(checked);
+    
+    if (checked) {
+      commentUtils?.showResolvedCommentsOnDom();
+    } else {
+      commentUtils?.hideResolvedCommentsOnDom();
+    }
+  }
+
+  const handleAddNewThread = () => {
+    console.log(client);
+    client?.setUiState({
+        showComposer: true,
+    });
+  }
 
   if (!selectedAd) return null
 
@@ -82,11 +108,26 @@ export function RightSidebar({ isOpen, onClose, selectedAd }: RightSidebarProps)
           </TabsContent>
           <TabsContent value="comments" className="">
             <div data-id={selectedAd.id}>
+              <div className="flex justify-between p-2">
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="show-resolved" checked={showResolved} onCheckedChange={handleShowResolvedChange} />
+                  <Label htmlFor="show-resolved" className="text-xs">Show resolved</Label>
+                </div>
+                <Button variant="outline" size="sm" onClick={toggleSortOrder} className="text-xs">
+                  Sort: {sortOrder === "desc" ? "Newest First" : "Oldest First"}
+                </Button>
+              </div>
+
               <VeltInlineCommentsSection
-                multiThread={false}
                 targetElementId={selectedAd.id}
-                shadowDom={false}
+                sortBy="createdAt"
+                sortOrder={sortOrder}
+                composerPosition="bottom"
               />
+
+                <Button variant="outline" size="sm" onClick={handleAddNewThread} className="text-xs">
+                  Add new thread
+                </Button>
 
             </div>
           </TabsContent>
