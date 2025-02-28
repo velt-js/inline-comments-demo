@@ -1,5 +1,3 @@
-import { useIdentify } from '@veltdev/react';
-
 export function UserAvatar() {
   const hardcodedUser = {
     userId: 'user-1',

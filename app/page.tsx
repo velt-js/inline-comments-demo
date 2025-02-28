@@ -13,7 +13,7 @@ export default function AdsInventoryPage() {
       <Header />
       <main className="pt-16">
         <VeltCustomization />
-        <VeltComments popoverMode={true} textMode={false} commentPinHighlighter={false} dialogOnHover={false} popoverTriangleComponent={false} />
+        <VeltComments textMode={false} commentsOnDom={false} />
         <VeltCommentsSidebar />
         <AdsDashboard />
       </main>

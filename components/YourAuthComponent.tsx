@@ -7,7 +7,7 @@ export default function AuthComponent() {
     name: 'John Doe',
     color: '#FF5733', // Example hex color
     textColor: '#FFFFFF',
-    organizationId: 'ads-inventory-org-1'
+    organizationId: 'inline-comments-org-1'
   };
 
   // Call useIdentify hook directly in the component
