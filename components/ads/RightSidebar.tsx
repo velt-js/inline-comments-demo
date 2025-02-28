@@ -123,9 +123,10 @@ export function RightSidebar({ isOpen, onClose, selectedAd }: RightSidebarProps)
                 sortBy="createdAt"
                 sortOrder={sortOrder}
                 composerPosition="bottom"
+                shadowDom={false}
               />
 
-                <Button variant="outline" size="sm" onClick={handleAddNewThread} className="text-xs">
+                <Button variant="ghost" size="sm" onClick={handleAddNewThread} className="text-xs">
                   Add new thread
                 </Button>
 

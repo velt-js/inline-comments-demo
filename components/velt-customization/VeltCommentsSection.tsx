@@ -6,18 +6,13 @@ const VeltCommentsSection = () => {
     <>
       <VeltInlineCommentsSectionWireframe.ComposerContainer veltIf='{showComposer}' />
       <VeltInlineCommentsSectionWireframe.List>
-      <VeltCommentDialogWireframe>
-
-        <VeltCommentDialogWireframe.Body>
+        <VeltCommentDialogWireframe>
           <div>
             <VeltIf condition="{commentAnnotation.status.id} === 'RESOLVED'">
               <VeltData field="commentAnnotation.status.name" />
             </VeltIf>
-
           </div>
-          <VeltCommentDialogWireframe.Threads />
-          <VeltCommentDialogWireframe.ToggleReply />
-          </VeltCommentDialogWireframe.Body>
+          <VeltCommentDialogWireframe.Body />
         </VeltCommentDialogWireframe>
       </VeltInlineCommentsSectionWireframe.List>
     </>
