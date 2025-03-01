@@ -21,31 +21,10 @@ export function AdsDashboard() {
   const rightSidebarRef = React.useRef<HTMLDivElement>(null);
   const rightSidebarButtonRef = React.useRef<HTMLButtonElement>(null);
   
-  // Handle clicking outside of the sidebar
-  React.useEffect(() => {
-    const handleOutsideClick = (event: MouseEvent) => {
-      if (
-        showComments &&
-        rightSidebarRef.current &&
-        !rightSidebarRef.current.contains(event.target as Node) &&
-        rightSidebarButtonRef.current &&
-        !rightSidebarButtonRef.current.contains(event.target as Node)
-      ) {
-        // If click is outside the sidebar and not on the toggle button, close the sidebar
-        setShowComments(false);
-      }
-    };
-
-    // Add event listener when sidebar is open
-    if (showComments) {
-      document.addEventListener('mousedown', handleOutsideClick);
-    }
-
-    // Cleanup function
-    return () => {
-      document.removeEventListener('mousedown', handleOutsideClick);
-    };
-  }, [showComments]);
+  // Handler to close the sidebar
+  const handleCloseSidebar = React.useCallback(() => {
+    setShowComments(false);
+  }, []);
   
   return (
     <SidebarProvider>
@@ -60,7 +39,7 @@ export function AdsDashboard() {
               variant="outline" 
               size="sm" 
               onClick={() => setShowComments(!showComments)}
-              className="flex items-center gap-1"
+              className="flex items-center gap-1.5"
               ref={rightSidebarButtonRef}
             >
               <MessageSquareIcon className="h-4 w-4" />
@@ -71,8 +50,12 @@ export function AdsDashboard() {
         
         {/* Right Sidebar for Comments - positioned absolutely */}
         {showComments && (
-          <div className="fixed top-0 right-0 h-screen z-20">
-            <RightSidebar targetElementId="ads-dashboard" ref={rightSidebarRef} />
+          <div className="fixed top-0 right-0 h-screen z-40">
+            <RightSidebar 
+              targetElementId="ads-dashboard" 
+              ref={rightSidebarRef} 
+              onClose={handleCloseSidebar}
+            />
           </div>
         )}
       </div>

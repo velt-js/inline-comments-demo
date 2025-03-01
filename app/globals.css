@@ -275,5 +275,9 @@ body {
       width: 100% !important;
     }
 
+    app-comment-dialog-composer-assign-user {
+      display: none !important;
+    }
+
   }
 }

@@ -5,7 +5,7 @@ const VeltCommentsSection = () => {
   return (
     <>
       <VeltInlineCommentsSectionWireframe.ComposerContainer veltIf='{showComposer}' />
-      <VeltInlineCommentsSectionWireframe.CommentCount veltIf='{false}' />
+      
       <VeltInlineCommentsSectionWireframe.List>
         <VeltCommentDialogWireframe>
           <div className="flex items-center mb-2">
@@ -24,6 +24,7 @@ const VeltCommentsSection = () => {
           <VeltCommentDialogWireframe.Composer />
         </VeltCommentDialogWireframe>
       </VeltInlineCommentsSectionWireframe.List>
+
     </>
   );
 };
