@@ -6,8 +6,6 @@ import { SidebarProvider } from "@/components/ui/sidebar"
 import { LeftSidebar } from "./ads/LeftSidebar"
 import { RightSidebar } from "./ads/RightSidebar"
 import { Button } from "./ui/button"
-import { type Ad } from "./ads/AdCard"
-import { adsData } from "@/lib/data"
 import { useSetDocument } from "@veltdev/react"
 
 export function AdsDashboard() {

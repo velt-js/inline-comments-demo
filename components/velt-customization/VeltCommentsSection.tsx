@@ -1,4 +1,4 @@
-import { VeltInlineCommentsSectionWireframe, VeltButtonWireframe, VeltIf, VeltData, VeltCommentDialogWireframe } from '@veltdev/react';
+import { VeltInlineCommentsSectionWireframe, VeltIf, VeltData, VeltCommentDialogWireframe } from '@veltdev/react';
 
 const VeltCommentsSection = () => {
 

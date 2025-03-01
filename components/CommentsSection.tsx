@@ -6,11 +6,7 @@ import { Button } from "./ui/button"
 import { Checkbox } from "./ui/checkbox"
 import { Label } from "./ui/label"
 
-interface CommentsSectionProps {
-  targetElementId: string;
-}
-
-export function CommentsSection({ targetElementId }: CommentsSectionProps) {
+export function CommentsSection() {
   const [showResolved, setShowResolved] = React.useState(false)
   
   const { client } = useVeltClient();
@@ -50,7 +46,7 @@ export function CommentsSection({ targetElementId }: CommentsSectionProps) {
       </div>
 
       <VeltInlineCommentsSection
-        targetElementId={targetElementId}
+        targetElementId="ads-dashboard"
         composerPosition="bottom"
         shadowDom={false}
       />

@@ -140,6 +140,7 @@ const SidebarProvider = React.forwardRef<
                 ...style,
               } as React.CSSProperties
             }
+            className={className}
             ref={ref}
             {...props}
           >

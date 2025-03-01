@@ -40,4 +40,6 @@ export const RightSidebar = React.forwardRef<HTMLDivElement, RightSidebarProps>(
       </div>
     )
   }
-) 
+)
+
+RightSidebar.displayName = "RightSidebar" 
